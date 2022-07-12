@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "550345586601",
+    "project_id": "ong-wa-project",
+    "storage_bucket": "ong-wa-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550345586601:android:115b69e75b75b65bd176b8",
+        "android_client_info": {
+          "package_name": "com.example.ong_wa_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "550345586601-ssva8shcptq8pu175vg7sk4akinn3843.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX-9t9425-APdMrQt0V7MVP9Vp0UpiDhM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "550345586601-ssva8shcptq8pu175vg7sk4akinn3843.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "550345586601-6d07gepva5nh4tob2g8svj4r1bph0m76.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.marcusvfa.ongwaproject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
