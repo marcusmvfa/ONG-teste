@@ -90,7 +90,7 @@ class PetViewModel extends ChangeNotifier {
         .then((response) async {
       var list = <PetModel>[];
       await Future.forEach(response, (dynamic element) async {
-        await compute(parsePetModel, element['data']).then((value) {
+        await compute(parsePetModel, element).then((value) {
           list.addAll(value);
         });
       });
@@ -109,32 +109,39 @@ class PetViewModel extends ChangeNotifier {
   }
 
   Future searchPet(String query) async {
-    await PetService(dio).searchPet(query: query).then((response) {
+    await PetService(dio)
+        .searchPet(query: query, petType: petTypeSelected.value)
+        .then((response) async {
       petList.value.clear();
       var list = <PetModel>[];
-      response.data.forEach((element) {
-        var pet = PetModel.fromJson(element);
-        pet.petType = petTypeSelected.value;
-        list.add(pet);
-        // switch (petTypeSelected.value) {
-        //   case PetTypes.dogs:
-        //     dogList.value.clear();
-        //     dogList.value.add(pet);
-        //     break;
-        //   case PetTypes.cats:
-        //     catList.value.clear();
-        //     catList.value.add(pet);
-        //     break;
-        // }
+      await Future.forEach(response, (dynamic element) async {
+        await compute(parsePetModel, element).then((value) {
+          list.addAll(value);
+        });
       });
+      // response.forEach((element) {
+      //   var pet = PetModel.fromJson(element);
+      //   pet.petType = petTypeSelected.value;
+      //   list.add(pet);
+      //   // switch (petTypeSelected.value) {
+      //   //   case PetTypes.dogs:
+      //   //     dogList.value.clear();
+      //   //     dogList.value.add(pet);
+      //   //     break;
+      //   //   case PetTypes.cats:
+      //   //     catList.value.clear();
+      //   //     catList.value.add(pet);
+      //   //     break;
+      //   // }
+      // });
       petList.value = list;
     });
   }
 
-  Future getPetImage(String? imageId) async {
+  Future getPetImage(String? imageId, PetTypes petTypes) async {
     if (imageId != null) {
       return await PetService(dio)
-          .getPetImage(imageId)
+          .getPetImage(imageId, petTypes)
           .then((value) => ImageModel.fromJson(value.data));
     } else {
       return null;
@@ -143,5 +150,13 @@ class PetViewModel extends ChangeNotifier {
 }
 
 parsePetModel(list) {
+  var li = <PetModel>[];
+  var type = list['type'];
+  list['data'].forEach((element) {
+    var pet = PetModel.fromJson(element);
+    pet.petType = type;
+    li.add(pet);
+  });
+  return li;
   return List<PetModel>.from(list.map((e) => PetModel.fromJson(e)).toList());
 }

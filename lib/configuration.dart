@@ -13,34 +13,7 @@ List<BoxShadow> customShadow = [
 ];
 
 List<Map> categories = [
-  {"name": "All", "iconPath": "images/cat.png", "type": PetTypes.all},
-  {"name": "Cats", "iconPath": "images/cat.png", "type": PetTypes.cats},
-  {"name": "Dogs", "iconPath": "images/dog.png", "type": PetTypes.dogs},
-];
-
-List<Map> drawerItems = [
-  {
-    "icon": Icons.house,
-    "title": "Adoption",
-  },
-  {
-    "icon": Icons.mark_email_read_outlined,
-    "title": "Donation",
-  },
-  {
-    "icon": Icons.add,
-    "title": "Add Pet",
-  },
-  {
-    "icon": Icons.favorite,
-    "title": "Favourites",
-  },
-  {
-    "icon": Icons.message,
-    "title": "Messages",
-  },
-  {
-    "icon": Icons.person,
-    "title": "Profile",
-  }
+  {"name": "All", "iconPath": "assets/pets.png", "type": PetTypes.all},
+  {"name": "Cats", "iconPath": "assets/cat-icon.png", "type": PetTypes.cats},
+  {"name": "Dogs", "iconPath": "assets/dog-icon.png", "type": PetTypes.dogs},
 ];

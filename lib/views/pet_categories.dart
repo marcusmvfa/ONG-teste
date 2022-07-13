@@ -38,29 +38,26 @@ class _PetCategoriesState extends State<PetCategories> {
                     });
                   },
                   child: Container(
-                      width: 60,
-                      height: 60,
-                      margin: EdgeInsets.symmetric(horizontal: 18),
-                      padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: customShadow,
-                        border: selectedCategory == index
-                            ? Border.all(
-                                color: secondaryGreen,
-                                width: 2,
-                              )
-                            : null,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Container(
-                        color: Colors.purple,
-                      )
-                      // Image.asset(
-                      //   categories[index]['iconPath'],
-                      //   scale: 1.8,
-                      // ),
-                      ),
+                    width: 60,
+                    height: 60,
+                    margin: EdgeInsets.symmetric(horizontal: 18),
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: customShadow,
+                      border: selectedCategory == index
+                          ? Border.all(
+                              color: secondaryGreen,
+                              width: 2,
+                            )
+                          : null,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Image.asset(
+                      categories[index]['iconPath'],
+                      scale: 1.8,
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 6,

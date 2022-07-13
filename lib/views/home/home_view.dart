@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ong_wa_project/configuration.dart';
+import 'package:ong_wa_project/views/home/components/header_home_view.dart';
 import 'package:ong_wa_project/views/pet_categories.dart';
 import 'package:ong_wa_project/views/pet_category_display.dart';
 import 'package:ong_wa_project/views/search_bar.dart';
@@ -33,35 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ListView(
               shrinkWrap: true,
               children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Spacer(),
-                      RichText(
-                        text: const TextSpan(
-                            text: 'Welcome, ',
-                            style: TextStyle(
-                                fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),
-                            children: [
-                              TextSpan(
-                                text: 'User',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ]),
-                      ),
-                      const Spacer(),
-                      const CircleAvatar(
-                        backgroundColor: Colors.purple,
-                        backgroundImage: AssetImage('assets/waProject.jpg'),
-                      ),
-                    ],
-                  ),
-                ),
+                HeaderHomeView(),
                 const SizedBox(
                   height: 20,
                 ),

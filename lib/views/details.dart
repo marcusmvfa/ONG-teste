@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:ong_wa_project/configuration.dart';
+import 'package:ong_wa_project/models/image_model.dart';
 import 'package:ong_wa_project/views/custom_button.dart';
 import 'package:ong_wa_project/views/custom_icon_btn.dart';
 
 class DetailsScreen extends StatelessWidget {
   String? id;
   Color? color;
-  DetailsScreen({this.id, this.color});
+  DetailsScreen(
+      this.petId, this.petName, this.breed, this.age, this.temperament, this.gender, this.imagePath,
+      {this.id, this.color});
+
+  String? petId = '';
+  String? petName = '';
+  String? breed = '';
+  String? age = '';
+  String? temperament = '';
+  String? gender = '';
+  ImageModel? imagePath;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
-    String petName = '';
-    String breed = '';
-    String age = '';
-    String gender = '';
-    String imagePath = '';
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -27,21 +31,16 @@ class DetailsScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 60, horizontal: 30),
-                    color: color,
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: Alignment.center,
-                          child: Hero(
-                            tag: id!,
-                            child: Image.asset(
-                              imagePath,
-                              width: size.width * 0.7,
-                            ),
-                          ),
+                    padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 30),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Hero(
+                        tag: petId!,
+                        child: Image.network(
+                          imagePath!.url!,
+                          width: size.width * 0.7,
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
@@ -50,53 +49,14 @@ class DetailsScreen extends StatelessWidget {
                     color: Colors.white,
                     child: Column(
                       children: [
-                        SizedBox(
-                          height: 100,
+                        const SizedBox(
+                          height: 50,
                         ),
-                        Container(
-                          margin: EdgeInsets.symmetric(
-                            horizontal: 20,
-                          ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CircleAvatar(
-                                backgroundImage: AssetImage('images/profile.jpg'),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Anvesha Shandilya',
-                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                                  ),
-                                  Text(
-                                    'Owner',
-                                    style: TextStyle(
-                                      color: fadedBlack,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Expanded(child: Container()),
-                              Text(
-                                'Dec 16, 2020',
-                                style: TextStyle(
-                                  color: fadedBlack,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Container(
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                             horizontal: 20,
                           ),
                           child: Text(
@@ -117,7 +77,7 @@ class DetailsScreen extends StatelessWidget {
           Align(
             alignment: Alignment.topCenter,
             child: Container(
-              margin: EdgeInsets.symmetric(
+              margin: const EdgeInsets.symmetric(
                 vertical: 42,
                 horizontal: 20,
               ),
@@ -125,19 +85,11 @@ class DetailsScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.chevron_left),
+                    icon: const Icon(Icons.chevron_left),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
                   ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.inbox_outlined,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  )
                 ],
               ),
             ),
@@ -146,8 +98,8 @@ class DetailsScreen extends StatelessWidget {
             alignment: Alignment.center,
             child: Container(
               height: 120,
-              padding: EdgeInsets.all(20),
-              margin: EdgeInsets.symmetric(
+              padding: const EdgeInsets.all(20),
+              margin: const EdgeInsets.symmetric(
                 horizontal: 20,
               ),
               decoration: BoxDecoration(
@@ -163,7 +115,7 @@ class DetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        petName,
+                        petName!,
                         style: TextStyle(
                           color: fadedBlack,
                           fontSize: 22,
@@ -181,74 +133,39 @@ class DetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        breed,
-                        style: TextStyle(
+                        breed!,
+                        style: const TextStyle(
                           fontSize: 12,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        age + ' years',
-                        style: TextStyle(
+                        age!,
+                        style: const TextStyle(
                           fontSize: 12,
                           color: Colors.black,
                         ),
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.location_pin,
-                        size: 18,
-                        color: primaryGreen,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        'Bla bla bla, Bangalore, India',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: fadedBlack,
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 100,
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20),
-                    child: CustomIconButton(
-                      iconData: Icons.favorite,
-                      onTap: () {},
-                    ),
+                  SizedBox(
+                    height: 8,
                   ),
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(right: 20),
-                      child: CustomButton(
-                        label: 'Adoption',
-                        onTap: () {},
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          temperament!,
+                          maxLines: 3,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ],
               ),

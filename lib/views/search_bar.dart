@@ -27,7 +27,7 @@ class SearchBar extends StatelessWidget {
               controller: field,
               onEditingComplete: () => viewModel.searchPet(field.text),
               decoration: const InputDecoration(
-                hintText: 'Search pet to adopt',
+                hintText: 'Procure por seu pet',
                 contentPadding: EdgeInsets.symmetric(
                   horizontal: 10,
                   vertical: 5,

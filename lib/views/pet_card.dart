@@ -10,7 +10,7 @@ class PetCard extends StatelessWidget {
   String? petName = '';
   String? breed = '';
   String? age = '';
-  String? distance = '';
+  String? temperament = '';
   String? gender = '';
   ImageModel? imagePath;
 
@@ -19,7 +19,7 @@ class PetCard extends StatelessWidget {
     this.petName,
     this.breed,
     this.age,
-    this.distance,
+    this.temperament,
     this.gender,
     this.imagePath,
   });
@@ -43,8 +43,13 @@ class PetCard extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) {
               return DetailsScreen(
-                id: petId,
-                color: randomColor,
+                petId,
+                petName,
+                breed,
+                age,
+                temperament,
+                gender,
+                imagePath,
               );
             },
           ),

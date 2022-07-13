@@ -16,6 +16,8 @@ dependencies:
   cloud_firestore: ^3.2.1
   provider: ^6.0.3
   dio: ^4.0.6
+  shared_preferences: ^2.0.15
+  google_fonts: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -31,6 +33,9 @@ flutter:
   assets:
     - assets/waProject.jpg
     - assets/waProjectLogo.png
+    - assets/cat-icon.png
+    - assets/dog-icon.png
+    - assets/pets.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

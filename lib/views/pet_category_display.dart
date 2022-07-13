@@ -12,19 +12,6 @@ class PetCategoryDisplay extends StatelessWidget {
   PetCategoryDisplay({Key? key}) : super(key: key);
   ValueNotifier<List<PetModel>> petsList = ValueNotifier([]);
   late PetViewModel viewModel;
-  whichPetType() {
-    petsList.value.clear();
-    if (viewModel.petTypeSelected.value == PetTypes.all) {
-      petsList.value.addAll(viewModel.catList.value);
-      petsList.value.addAll(viewModel.dogList.value);
-      petsList.value.shuffle();
-    } else if (viewModel.petTypeSelected.value == PetTypes.cats) {
-      petsList.value.addAll(viewModel.catList.value);
-    } else {
-      petsList.value.addAll(viewModel.dogList.value);
-    }
-    petsList.notifyListeners();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +25,11 @@ class PetCategoryDisplay extends StatelessWidget {
           return ValueListenableBuilder(
             valueListenable: viewModel.petList,
             builder: (context, value, child) {
-              // whichPetType();
               return ListView.builder(
                 shrinkWrap: true,
                 physics: BouncingScrollPhysics(),
-                itemCount: viewModel.petList.value.length,
+                itemCount:
+                    viewModel.petList.value.length > 20 ? 20 : viewModel.petList.value.length,
                 itemBuilder: (context, index) {
                   var pet = viewModel.petList.value[index];
                   if (pet.image != null) {
@@ -54,13 +41,14 @@ class PetCategoryDisplay extends StatelessWidget {
                         age: pet.lifeSpan,
                         breed: pet.bredFor ?? "",
                         imagePath: pet.image!,
+                        temperament: pet.temperament,
                       ),
                     );
                   } else {
                     return Container(
                       margin: EdgeInsets.symmetric(vertical: 5),
                       child: FutureBuilder(
-                        future: viewModel.getPetImage(pet.referenceImageId ?? null),
+                        future: viewModel.getPetImage(pet.referenceImageId ?? null, pet.petType!),
                         builder: (context, snapshot) {
                           ImageModel data =
                               snapshot.data != null ? snapshot.data as ImageModel : ImageModel();
