@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ong_wa_project/configuration.dart';
 import 'package:ong_wa_project/views/home/components/header_home_view.dart';
-import 'package:ong_wa_project/views/pet_categories.dart';
-import 'package:ong_wa_project/views/pet_category_display.dart';
-import 'package:ong_wa_project/views/search_bar.dart';
+import 'package:ong_wa_project/views/home/components/pet_categories.dart';
+import 'package:ong_wa_project/views/home/components/pet_category_display.dart';
+import 'package:ong_wa_project/views/home/components/search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);

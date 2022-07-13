@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ong_wa_project/configuration.dart';
 import 'package:ong_wa_project/models/image_model.dart';
-import 'package:ong_wa_project/views/custom_button.dart';
-import 'package:ong_wa_project/views/custom_icon_btn.dart';
 
 class DetailsScreen extends StatelessWidget {
   String? id;

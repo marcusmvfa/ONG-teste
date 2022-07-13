@@ -5,7 +5,7 @@ import 'package:ong_wa_project/configuration.dart';
 import 'package:ong_wa_project/models/image_model.dart';
 import 'package:ong_wa_project/models/pet_model.dart';
 import 'package:ong_wa_project/view_models/pet_view_model.dart';
-import 'package:ong_wa_project/views/pet_card.dart';
+import 'package:ong_wa_project/views/home/components/pet_card.dart';
 import 'package:provider/provider.dart';
 
 class PetCategoryDisplay extends StatelessWidget {

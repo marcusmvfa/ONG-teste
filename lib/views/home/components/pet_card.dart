@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:ong_wa_project/configuration.dart';
 import 'package:ong_wa_project/models/image_model.dart';
-import 'package:ong_wa_project/views/details.dart';
+import 'package:ong_wa_project/views/detail/details.dart';
 
 class PetCard extends StatelessWidget {
   String? petId = '';
